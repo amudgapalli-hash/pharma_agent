@@ -1,0 +1,235 @@
+# ===================================
+# SECURITY: ENVIRONMENT & SECRETS
+# ===================================
+.env
+.env.local
+.env.*.local
+.env.prod
+.env.production
+.env.test
+*.key
+*.pem
+*.pfx
+*.p12
+*_secret*
+*_token*
+secrets/
+.aws/
+.ssh/
+
+# ===================================
+# SENSITIVE DATA & DATABASES
+# ===================================
+*.db
+*.sqlite
+*.sqlite3
+pharma_audit_trail.db
+*.pkl
+*.pickle
+*.joblib
+.credentials
+credentials.json
+*credentials*
+*api_key*
+*apikey*
+config.json
+secrets.json
+
+# ===================================
+# PYTHON
+# ===================================
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===================================
+# VIRTUAL ENVIRONMENTS
+# ===================================
+venv/
+env/
+ENV/
+.venv
+.env.bak
+.venv.bak
+virtualenv/
+
+# ===================================
+# IDE & EDITOR
+# ===================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# ===================================
+# LOGS & CACHES
+# ===================================
+*.log
+logs/
+.log
+.logs
+*.log.*
+*.log.[0-9]
+*.cache
+.cache/
+*.cache
+.cache/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+.coverage
+htmlcov/
+
+# ===================================
+# LLM / AI PROJECT SPECIFIC
+# ===================================
+*.jsonl
+*.ckpt
+*.checkpoint
+*.model
+*.pt
+*.pth
+*.bin
+*.safetensors
+models/
+checkpoints/
+*.ollama
+ollama_data/
+.langgraph_api/
+langgraph_api/
+.memgpt/
+.ollama/
+
+# ===================================
+# DATABASE FILES
+# ===================================
+*.db
+*.sqlite
+*.sqlite3
+*.sqlcipher
+postgres_data/
+qdrant_data/
+ollama_data/
+
+# ===================================
+# DOCKER & CONTAINER RELATED
+# ===================================
+.docker/
+*.dockerignore.bak
+
+# ===================================
+# OS & PLATFORM SPECIFIC
+# ===================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+.TemporaryItems
+
+# ===================================
+# TEMPORARY & BACKUP FILES
+# ===================================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.swp
+*.swo
+*~
+.~*
+*.orig
+
+# ===================================
+# TEST & BUILD ARTIFACTS
+# ===================================
+.tox/
+.nox/
+.eggs/
+*.egg
+*.egg-info
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox
+.hypothesis/
+.mypy_cache/
+
+# ===================================
+# NODE / FRONTEND (if applicable)
+# ===================================
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+
+# ===================================
+# JUPYTER & NOTEBOOKS
+# ===================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.ipynb
+
+# ===================================
+# SYSTEM GENERATED
+# ===================================
+.DS_Store
+.env.*.swp
+.vscode-settings.json
+settings.json
+launch.json
+
+# ===================================
+# LANGSMITH / TRACING
+# ===================================
+.langsmith/
+langsmith_client_config.json
+
+# ===================================
+# SENSITIVE DOCUMENTATION (optional - comment out if public)
+# ===================================
+# *_CREDENTIALS.md
+# *_SECRET*.md
+# INTERNAL_*.md
+
+# ===================================
+# KEEP THESE CRITICAL PATTERNS SAFE
+# ===================================
+# Never commit anything with:
+# - passwords, API keys, tokens
+# - database files or connection strings
+# - private keys or certificates
+# - AWS, GCP, Azure credentials
+# - OAuth tokens or refresh tokens
+# - Any .env files or environment configs

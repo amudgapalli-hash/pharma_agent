@@ -1,0 +1,88 @@
+# 4. Unified Docker Compose Orchestrator (docker-compose.yml)
+# This orchestrator couples the application layers with local relational metadata database 
+#(PostgreSQL), local vector database (Qdrant), and local LLM engine (Ollama).
+
+# version: '3.8'
+
+services:
+  # 1. FastAPI Secured Backend
+  fastapi_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      - JWT_SECRET=super-secret-scientific-key-12345
+      - POSTGRES_URL=postgresql://sci_user:sci_pass@postgres_db:5432/compliance_db
+      - QDRANT_URL=http://qdrant_vector:6333
+      - OLLAMA_URL=http://ollama_llm:11434
+    depends_on:
+      - postgres_db
+      - qdrant_vector
+    networks:
+      - sci_network
+
+  # 2. Streamlit Dashboard Frontend
+  streamlit_dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    depends_on:
+      - fastapi_backend
+    networks:
+      - sci_network
+
+  # 3. PostgreSQL Database (Structured Audits Metadata)
+  postgres_db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: sci_user
+      POSTGRES_PASSWORD: sci_pass
+      POSTGRES_DB: compliance_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - sci_network
+
+  # 4. Qdrant Vector Database (Unstructured Audit Logs & Document Embeddings)
+  qdrant_vector:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    networks:
+      - sci_network
+
+  # 5. Ollama LLM Service (Local Model Executions)
+  ollama_llm:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # Uncomment deploy section below if you have a local NVIDIA GPU available to containers
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    networks:
+      - sci_network
+
+volumes:
+  postgres_data:
+  qdrant_data:
+  ollama_data:
+
+networks:
+  sci_network:
+    driver: bridge

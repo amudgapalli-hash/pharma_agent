@@ -1,0 +1,19 @@
+fastapi>=0.100.0
+uvicorn>=0.22.0
+pydantic>=2.0
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.6
+streamlit
+pandas
+requests
+# Security dependencies
+python-dotenv>=1.0.0
+cryptography>=41.0.0
+# LangChain & LLM
+langchain-ollama
+langchain-core
+langgraph
+# Database
+sqlalchemy>=2.0
+
